@@ -1,0 +1,13 @@
+Prueba para strcmp
+Prueba para strcmp
+<<<<<<< HEAD
+Prueba para strcmp
+Prueba para strcmp
+Prueba para strcmp
+Prueba para strcmp
+Prueba para strcmp
+Prueba para strcmp
+=======
+>>>>>>> c122ed83f402054e835e621e88690ec3aa54e601
+Prueba para strcmp
+Prueba para strcmp
