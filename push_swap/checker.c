@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/13 19:52:36 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/14 19:18:20 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int main (int argc, char **argv)
 {
 	long int	*stk;
 	long int	*stk2;
-
 	if (argc > 1)
 	{
 		stk = check_values(argc, argv);
@@ -29,8 +28,9 @@ int main (int argc, char **argv)
 			printf("error");
 		
 		}
-	stk2 = ft_stacks(argc, stk);
-	return (0);
+		stk2 = ft_stacks(argc, stk);
+		ft_orders (stk, stk2, argc);
+		return (0);
 	}
 	else
 		printf ("faltan los argumentos");

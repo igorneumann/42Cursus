@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/13 19:26:33 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/14 20:13:59 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,24 @@ long*	ft_compare (long *i, int argc)
 		j--;
 	}
 	return (i);
+}
+
+void	ft_printstacks (long *i, long *j, int dig)
+{
+
+	printf ("\n\n");
+	while (--dig > 0)
+	{
+		if (i[dig] < 2147483647)
+			printf ("%ld", i[dig]);
+		else
+			printf ("-");			
+		printf ("|");
+		if (j[dig] < 2147483647)
+			printf ("%ld", j[dig]);
+		else
+			printf ("-");
+		printf ("\n");
+	}
+	printf ("\n");
 }
