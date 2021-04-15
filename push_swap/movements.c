@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/14 21:03:40 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/15 20:53:08 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@ void			ft_orders(long *stk, long *stk2, int dig)
 	while (i-- > 0)
 		cad[i] = '\0';
 	ft_printstacks (stk, stk2, dig);
-	printf ("Tus ordenes:\n");	
+	printf ("Tus ordenes (vacio para terminar):\n");	
 	read(0, cad, 3);
 	if (cad[0] > 96 && cad[0] < 116 && cad[1] > 96 && cad[1] < 116)
 	{
 		ft_move(stk, stk2, dig, cad);
+		ft_orders(stk, stk2, dig);
 	}
+	else 
+		ft_compare(stk, dig);
 }
 
 
 void			ft_move(long *stk, long *stk2, int dig, char *cad)
 {
-	printf ("Escribiste: %s", cad);
 	if (cad[0] == 's')
 	{
 		if (cad[1] == 'a' || cad[1] == 's' )
@@ -49,25 +51,19 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 	}
 	else if (cad[0] == 'r')
 	{
-		if (cad[2] > 96 && cad[2] < 116)
+		if (cad[1] == 'r' && cad[2])
 		{
-			printf("3 digitos");
 			dig = -dig;
 			cad[1] = cad[2];
 		}
-		//printf ("cad1 es %c\ncad2 es %c\ndig es %d\n", cad[1], cad[2], dig);
 		if (cad[1] != 'b')
-		{
-			printf("condicion1");
 			ft_rotate(stk, dig);
-		}
 		if (cad[1] != 'a')
-		{
-			printf("condicion2");
 			ft_rotate(stk2, dig);
-		}
 	}
-ft_printstacks (stk, stk2, dig);
+	if (dig < 0)
+		dig = -dig;
+	ft_printstacks (stk, stk2, dig);
 }
 
 void			ft_swap(long *stk, int dig)
@@ -94,17 +90,33 @@ void			ft_push(long *stk, long *stk2, int dig)
 
 void			ft_rotate(long *stk, int dig)
 {
-	printf ("hola");
-	stk[0] = stk[--dig];
-	while (dig > 0)
-		stk[dig] = stk[dig - 1];
+	int i;
+
+	if (dig < 0)
+	{
+		i = -dig;
+		while (dig < 1)
+		{
+			stk[dig + i] = stk[dig + i + 1];
+			dig++;
+		}
+		stk[--i] = stk[0];
+	}
+	else
+	{ 
+		i = dig;
+		stk[0] = stk[--dig];
+		while (dig > 0)
+		{
+			stk[dig] = stk[dig - 1];
+			dig--;
+		}
+	}
+	if (stk[1] == 3000000000)
+	{	
+		dig = 0;
+		while (++dig < i)
+			stk[dig] = stk[dig + 1];
+	}
 	stk[0] = 3000000000;
 }
-/*
-ra	push 1st element a become last
-rb	push 1st element b to last
-rr	push 1st elements A and B to bottom
-rra reverse rotation A last element become 1st
-rrb reverse rotation B last element become 1st
-rrr reverse rotation B last element become 1st
-*/

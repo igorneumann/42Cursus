@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/14 19:18:20 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/15 21:01:14 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,29 @@ int main (int argc, char **argv)
 {
 	long int	*stk;
 	long int	*stk2;
+	long int	cad[argc];
+
 	if (argc > 1)
 	{
-		stk = check_values(argc, argv);
-		if (stk[0] == -1 || argc == 2)
-			printf("OK");
+		stk = check_values(argc, argv, cad);
+		if (argc == 2 || (stk[0] && stk[0] == -1))
+			printf("OK\n");
 		else if (stk[0] == 0)
-			printf("todos los argumentos son numeros enteros");
-		else
 		{
-			printf("error");
-		
+			printf("todos los argumentos son numeros enteros\n");
+			stk2 = ft_stacks(argc, stk);
+			ft_orders (stk, stk2, argc);
+			if (stk[0] == -1)
+				printf("OK\n");
+			else
+				printf("BOOO, ESTA MAL!\n");
 		}
-		stk2 = ft_stacks(argc, stk);
-		ft_orders (stk, stk2, argc);
+		else
+			printf("error\n");
 		return (0);
 	}
 	else
-		printf ("faltan los argumentos");
+		printf ("faltan los argumentos\n");
 	return (1);
 }
 

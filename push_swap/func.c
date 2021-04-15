@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/14 20:13:59 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/15 20:59:12 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ long int		ft_atoiswap(const char *n)
 	return (i[2] * i[1]);
 }
 
-long* check_values (int argc, char **argv)
+long* check_values (int argc, char **argv, long *cad)
 {
-	int i;
+	long i;
 	int j;
 	int k;
+
 	i = 1;
 	j = 0;
 	k = 0;
@@ -65,28 +66,33 @@ long* check_values (int argc, char **argv)
 		}
 	}
 	if (j == 0)
-		return (ft_convert_int(argc, argv));
+		return (ft_convert_int(argc, argv, cad));
 	else
-		return ((long*)1);
+		cad[0] = 1;	
+	return (cad);
 }
 
-long* ft_convert_int (int argc, char **argv)
+long* ft_convert_int (int argc, char **argv, long *cad)
 {
 	int 		j;
 	long int	*k;
 
 	j = - 1;
+	cad[0] = 0;
 	if (!(k = malloc(argc * sizeof(long int))))
-		return ((long*)-1);
-	while ((argc + j) >= 0)
+		cad[0] = -1;
+	while ((argc + j) > 0)
 	{
 		k[argc + j] = ft_atoiswap(argv[argc + j]);
 		if (k[argc + j] > 2147483648)
-			return ((long*)1);
+			cad[0] = 1;
 		j--;
 	}
 	k[0] = -1;
-	return (ft_compare (k, argc));
+	if (cad[0] == 0)
+		return (ft_compare (k, argc));
+	else
+		return (cad);
 }
 
 long*	ft_compare (long *i, int argc)
@@ -94,6 +100,7 @@ long*	ft_compare (long *i, int argc)
 	int j;
 	int k;
 
+	i[0] = -1;
 	j = argc - 1;
 	while (j >= 2)
 	{
@@ -101,8 +108,11 @@ long*	ft_compare (long *i, int argc)
 		while (k >= 1)
 		{
 			if (i[j] == i[k])
-				return ((long*)1);
-			if (i[j] < i[k])
+			{
+				i[0] = 1;
+				return (i);
+			}
+			else if (i[j] < i[k])
 				i[0] = 0;
 			k--;
 		}
@@ -118,7 +128,7 @@ void	ft_printstacks (long *i, long *j, int dig)
 	while (--dig > 0)
 	{
 		if (i[dig] < 2147483647)
-			printf ("%ld", i[dig]);
+			printf ("%d: %ld", dig, i[dig]);
 		else
 			printf ("-");			
 		printf ("|");
@@ -128,5 +138,9 @@ void	ft_printstacks (long *i, long *j, int dig)
 			printf ("-");
 		printf ("\n");
 	}
+	if (i[0] == 3000000000 && j[0] == 3000000000)
+		printf ("\nBuffer: clean\n");
+	else 
+		printf ("\nBuffer NOT CLEAN: %ld - %ld\n", i[0], j[0]);
 	printf ("\n");
 }
