@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/15 20:15:12 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/16 20:25:29 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void		ft_move(long *stk, long *stk2, int dig, char *cad);
 void		ft_swap(long *stk, int dig);
 void		ft_push(long *stk, long *stk2, int dig);
 void		ft_rotate(long *stk, int dig);
+void		ft_help(void);
 #endif

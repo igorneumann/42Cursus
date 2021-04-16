@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/15 20:59:12 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/16 19:53:12 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,16 @@ long* ft_convert_int (int argc, char **argv, long *cad)
 	int 		j;
 	long int	*k;
 
-	j = - 1;
+	j = 1;
 	cad[0] = 0;
 	if (!(k = malloc(argc * sizeof(long int))))
 		cad[0] = -1;
-	while ((argc + j) > 0)
+	while ((argc - j) > 0)
 	{
-		k[argc + j] = ft_atoiswap(argv[argc + j]);
-		if (k[argc + j] > 2147483648)
+		k[argc - j] = ft_atoiswap(argv[j]);
+		if (k[argc - j] > 2147483648)
 			cad[0] = 1;
-		j--;
+		j++;
 	}
 	k[0] = -1;
 	if (cad[0] == 0)
@@ -112,7 +112,7 @@ long*	ft_compare (long *i, int argc)
 				i[0] = 1;
 				return (i);
 			}
-			else if (i[j] < i[k])
+			else if (i[j] > i[k])
 				i[0] = 0;
 			k--;
 		}
@@ -123,12 +123,12 @@ long*	ft_compare (long *i, int argc)
 
 void	ft_printstacks (long *i, long *j, int dig)
 {
-
-	printf ("\n\n");
+	printf ("\nS: A|B\n");
 	while (--dig > 0)
 	{
+		printf ("%d: ", dig);
 		if (i[dig] < 2147483647)
-			printf ("%d: %ld", dig, i[dig]);
+			printf ("%ld", i[dig]);
 		else
 			printf ("-");			
 		printf ("|");
@@ -138,9 +138,7 @@ void	ft_printstacks (long *i, long *j, int dig)
 			printf ("-");
 		printf ("\n");
 	}
-	if (i[0] == 3000000000 && j[0] == 3000000000)
-		printf ("\nBuffer: clean\n");
-	else 
-		printf ("\nBuffer NOT CLEAN: %ld - %ld\n", i[0], j[0]);
+	if (i[0] != 3000000000 || j[0] != 3000000000)
+		printf ("\nWARNING: Buffer NOT CLEAN: %ld - %ld\n", i[0], j[0]);
 	printf ("\n");
 }

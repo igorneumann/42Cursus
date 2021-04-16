@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/15 20:53:08 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/16 19:52:15 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,26 @@
 void			ft_orders(long *stk, long *stk2, int dig)
 {
 	char		cad[4];
-	int			i;
 
-	i = 4;
-	while (i-- > 0)
-		cad[i] = '\0';
 	ft_printstacks (stk, stk2, dig);
-	printf ("Tus ordenes (vacio para terminar):\n");	
-	read(0, cad, 3);
-	if (cad[0] > 96 && cad[0] < 116 && cad[1] > 96 && cad[1] < 116)
+	printf ("Tus ordenes ('inexistente' o vacio para terminar):\n");	
+	read(0, &cad[0], 1);
+	while (cad[0] < 97 && cad[0] != 10)
+		read(0, &cad[0], 1);
+	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
+		read(0, &cad[1], 1);
+	if (cad[1] == 'r')
+		read(0, &cad[2], 1);
+	else
+		cad[2] = '\0';
+	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
+		read(0, &cad[3], 1);
+	cad[3] = '\0';
+	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
+		printf ("Exec %s:\n", cad);
+	if ((cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r') &&
+		(cad[1] == 'a' || cad[1] == 'b' || 
+		(cad[1] == 'r' && (cad[2] == 'a' || cad[2] == 'b' ))))
 	{
 		ft_move(stk, stk2, dig, cad);
 		ft_orders(stk, stk2, dig);
@@ -44,9 +55,9 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 	}
 	else if (cad[0] == 'p')
 	{
-		if (cad[1] == 'a')
-			ft_push(stk, stk2, dig);
 		if (cad[1] == 'b')
+			ft_push(stk, stk2, dig);
+		if (cad[1] == 'a')
 			ft_push(stk2, stk, dig);
 	}
 	else if (cad[0] == 'r')
@@ -63,12 +74,13 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 	}
 	if (dig < 0)
 		dig = -dig;
-	ft_printstacks (stk, stk2, dig);
 }
 
 void			ft_swap(long *stk, int dig)
 {
 	--dig;
+	while (stk[dig] == 3000000000)
+		--dig;
 	stk[0] = stk[dig];
 	stk[dig] = stk[dig - 1];
 	stk[dig - 1] = stk[0];
@@ -91,32 +103,30 @@ void			ft_push(long *stk, long *stk2, int dig)
 void			ft_rotate(long *stk, int dig)
 {
 	int i;
+	int j;
 
+	j = 0;
 	if (dig < 0)
 	{
-		i = -dig;
-		while (dig < 1)
-		{
-			stk[dig + i] = stk[dig + i + 1];
-			dig++;
-		}
-		stk[--i] = stk[0];
+		j = 1;
+		dig = -dig;
+		i = 1;
+		stk[0] = stk[1];
 	}
-	else
-	{ 
+	while (stk[--dig] == 3000000000)
+		--dig;
+	if (j == 0)
+	{
+		j = -1;
 		i = dig;
-		stk[0] = stk[--dig];
-		while (dig > 0)
-		{
-			stk[dig] = stk[dig - 1];
-			dig--;
-		}
+		stk[0] = stk[dig];
 	}
-	if (stk[1] == 3000000000)
-	{	
-		dig = 0;
-		while (++dig < i)
-			stk[dig] = stk[dig + 1];
+	while (i <= dig && i > 0)
+	{
+		stk[i] = stk[i + j];
+		i = i + j;
 	}
+	if (stk[dig] == 3000000000)
+		stk[dig] = stk[0];
 	stk[0] = 3000000000;
 }
