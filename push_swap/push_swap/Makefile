@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 19:32:05 by ineumann          #+#    #+#              #
-#    Updated: 2021/04/20 20:39:26 by ineumann         ###   ########.fr        #
+#    Updated: 2021/04/21 17:30:01 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = @gcc
 
 CFLAGS = -Wall -Wextra -Werror -I libft -g
 
-SRCS = push_swap.c func.c movements.c orderit.c push_func.c
+SRCS = push_swap.c func.c movements.c orderit.c push_func.c orderbig.c
 
 LIB = ../libft/libft.a
 

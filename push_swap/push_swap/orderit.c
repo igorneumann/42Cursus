@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:02:36 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/20 20:48:42 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:45:14 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,10 @@ void		ft_orderit(long *stk, long *stk2, int dig)
 		printf ("sa");
 	else if (dig == 4)
 		printf ("%s", ft_ordertree(stk, dig));
-	else if (dig == 5)
+	else if (dig > 4 && dig < 99)
 	{
-		ft_orderfour(stk, stk2, dig);
+		ft_orderbig(stk, stk2, dig);
 		printf ("pa\n");
-	}
-	else if (dig == 6)
-	{
-		ft_orderfive(stk, stk2, dig);
-		printf ("pa\npa\n");
 	}
 }
 
@@ -50,7 +45,7 @@ char*		ft_ordertree(long *stk, int dig)
 		return ("sa\n");
 }
 
-void		ft_orderfour(long *stk, long *stk2, int dig)
+/*void		ft_orderbig(long *stk, long *stk2, int dig)
 {
 	if (ft_findsmaller(stk, dig) == 4)
 	{
@@ -75,41 +70,7 @@ void		ft_orderfour(long *stk, long *stk2, int dig)
 		ft_move(stk, stk2, dig, "pb");
 		printf ("rra\npb\n");
 	printf ("%s", ft_ordertree(stk, dig));
-}
-
-void		ft_orderfive(long *stk, long *stk2, int dig)
-{
-	if (ft_findsmaller(stk, dig) == 5)
-	{
-		ft_move(stk, stk2, dig, "pb");
-		printf ("pb\n");
-	}
-	else if (ft_findsmaller(stk, dig) == 4)
-	{
-		ft_move(stk, stk2, dig, "sa");
-		ft_move(stk, stk2, dig, "pb");
-		printf ("sa\npb\n");
-	}
-	else if (ft_findsmaller(stk, dig) == 3)
-	{
-		ft_move(stk, stk2, dig, "rra");
-		ft_move(stk, stk2, dig, "rra");
-		ft_move(stk, stk2, dig, "pb");
-		printf ("ra\nra\npb\n");	
-	}
-	else if (ft_findsmaller(stk, dig) == 2)
-	{
-		ft_move(stk, stk2, dig, "ra");
-		ft_move(stk, stk2, dig, "ra");
-		ft_move(stk, stk2, dig, "pb");
-		printf ("ra\nra\npb\n");	
-	}
-	else
-		ft_move(stk, stk2, dig, "ra");
-		ft_move(stk, stk2, dig, "pb");
-		printf ("rra\npb\n");
-	ft_orderfour(stk, stk2, dig);
-}
+}*/
 
 int			ft_findbigger(long *stk, int dig)
 {
@@ -137,7 +98,7 @@ int			ft_findsmaller(long *stk, int dig)
 
 	i = 0;
 	j = 3000000000;
-	while (i++ < dig)
+	while (++i < dig)
 	{
 		if (stk[i] < j)
 		{

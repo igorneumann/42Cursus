@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/20 20:37:54 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/21 18:35:23 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void		ft_rotate(long *stk, int dig);
 int			ft_findbigger(long *stk, int dig);
 int			ft_findsmaller(long *stk, int dig);
 char*		ft_ordertree(long *stk, int dig);
-void		ft_orderfour(long *stk, long *stk2, int dig);
-void		ft_orderfive(long *stk, long *stk2, int dig);
+void		ft_orderbig(long *stk, long *stk2, int dig);
+void		ft_ra(long *stk, long *stk2, int small, int dig);
+void		ft_rra(long *stk, long *stk2, int small, int dig);
 long		*ft_stkdup(long int *s, int size);
 void		ft_help(void);
 #endif

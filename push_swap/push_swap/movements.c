@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/20 18:52:54 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/21 18:35:21 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,10 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 	else if (cad[0] == 'r')
 	{
 		if (cad[1] == 'r' && cad[2])
-		{
 			dig = -dig;
-			cad[1] = cad[2];
-		}
-		if (cad[1] != 'b')
+		if (cad[1] != 'b' && cad[2] != 'b')
 			ft_rotate(stk, dig);
-		if (cad[1] != 'a')
+		if (cad[1] != 'a' && cad[2] != 'a')
 			ft_rotate(stk2, dig);
 	}
 	if (dig < 0)
@@ -113,7 +110,8 @@ void			ft_rotate(long *stk, int dig)
 		i = 1;
 		stk[0] = stk[1];
 	}
-	while (stk[--dig] == 3000000000)
+	--dig;
+	while (stk[dig] == 3000000000)
 		--dig;
 	if (j == 0)
 	{
