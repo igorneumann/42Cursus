@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:02:36 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/21 17:45:14 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/22 18:40:35 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,24 @@ void		ft_orderit(long *stk, long *stk2, int dig)
 	else if (dig == 4)
 		printf ("%s", ft_ordertree(stk, dig));
 	else if (dig > 4 && dig < 99)
-	{
 		ft_orderbig(stk, stk2, dig);
-		printf ("pa\n");
-	}
 }
 
 char*		ft_ordertree(long *stk, int dig)
 {
-	if (ft_findbigger(stk, dig) == 3)
+	int bigger;
+
+	bigger = ft_findbigger(stk, dig);
+//	printf ("bigger is %i\n", bigger);
+//	ft_printstacks (stk, stk, dig);
+	if (bigger == 3)
 	{
 		if (stk[2] > stk[1])
 			return ("ra\nsa\n");
 		else
 			return ("ra\n");
 	}
-	else if (ft_findbigger(stk, dig) == 2)
+	else if (bigger == 2)
 	{
 		if (stk[3] > stk[1])
 			return ("rra\n");
@@ -44,33 +46,6 @@ char*		ft_ordertree(long *stk, int dig)
 	else
 		return ("sa\n");
 }
-
-/*void		ft_orderbig(long *stk, long *stk2, int dig)
-{
-	if (ft_findsmaller(stk, dig) == 4)
-	{
-		ft_move(stk, stk2, dig, "pb");
-		printf ("pb\n");
-	}
-	else if (ft_findsmaller(stk, dig) == 3)
-	{
-		ft_move(stk, stk2, dig, "sa");
-		ft_move(stk, stk2, dig, "pb");
-		printf ("sa\npb\n");
-	}
-	else if (ft_findsmaller(stk, dig) == 2)
-	{
-		ft_move(stk, stk2, dig, "ra");
-		ft_move(stk, stk2, dig, "ra");
-		ft_move(stk, stk2, dig, "pb");
-		printf ("ra\nra\npb\n");	
-	}
-	else
-		ft_move(stk, stk2, dig, "ra");
-		ft_move(stk, stk2, dig, "pb");
-		printf ("rra\npb\n");
-	printf ("%s", ft_ordertree(stk, dig));
-}*/
 
 int			ft_findbigger(long *stk, int dig)
 {

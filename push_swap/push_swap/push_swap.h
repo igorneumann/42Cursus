@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/21 18:35:23 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:00:44 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void		ft_orderbig(long *stk, long *stk2, int dig);
 void		ft_ra(long *stk, long *stk2, int small, int dig);
 void		ft_rra(long *stk, long *stk2, int small, int dig);
 long		*ft_stkdup(long int *s, int size);
+int 		ft_findtop(long *stk, int dig);
 void		ft_help(void);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:23:58 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/20 20:38:16 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/22 19:31:28 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int main (int argc, char **argv)
 	if (argc > 1)
 	{
 		stk = check_values(argc, argv, cad);
-		if (argc == 2 || (stk[0] && stk[0] == -1))
+		if (argc > 2 && (stk[0] && stk[0] == -1))
 			printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
-		else if (stk[0] == 0)
+		else if (argc > 2 && stk[0] == 0)
 		{
 			ft_orderit(ft_stkdup(stk, argc), ft_stacks(argc, stk), argc);
 			ft_orders (stk, ft_stacks(argc, stk), argc);
@@ -31,7 +31,7 @@ int main (int argc, char **argv)
 			else
 				printf("KO\n\033[0;31mBOOO, ESTA MAL!\033[0m\n\n");
 		}
-		else
+		else if (argc > 2)
 			printf("\n\033[0;31mERROR!\nERROR!\nERROR!\nVAS FATAL!\033[0m\n\n");
 		return (0);
 	}
