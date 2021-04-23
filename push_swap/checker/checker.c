@@ -6,26 +6,31 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/16 20:24:31 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:54:22 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int main (int argc, char **argv)
 {
+	int			count;
+	int			size;
 	long int	*stk;
 	long int	cad[argc];
 
-	if (argc > 1)
+	count = 0;
+	while (count++ < argc)
+		size = ft_find_args(argc, argv[1]);
+	if (size > 1)
 	{
-		stk = check_values(argc, argv, cad);
-		if (argc == 2 || (stk[0] && stk[0] == -1))
+		stk = check_values(size, argv, cad);
+		if (size == 2 || (stk[0] && stk[0] == -1))
 			printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
 		else if (stk[0] == 0)
 		{
 			printf("\nTodos los argumentos son numeros enteros\n");
-			ft_orders (stk, ft_stacks(argc, stk), argc);
+			ft_orders (stk, ft_stacks(size, stk), size);
 			if (stk[0] == -1)
 				printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
 			else
@@ -52,6 +57,29 @@ long*	ft_stacks (int argc,long *stk)
 		stk2[i++] = 3000000000;
 	stk[0] = 3000000000;
 	return (stk2);	
+}
+
+int ft_findtop(long *stk, int dig)
+{
+	--dig;
+	while (stk[dig] == 3000000000)
+		--dig;
+	return (dig);
+}
+
+int ft_find_args(int argc, char *argv)
+{
+	int args;
+
+	args = 1;
+	while (argv[args])
+	{
+		if (ft_isdigit(argv[args]))
+			if (argv[args - 1] == ' ')
+				argc++;
+		args++;
+	}
+	return(argc);
 }
 
 void	ft_help(void)

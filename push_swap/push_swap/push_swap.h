@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/22 17:00:44 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/23 19:40:35 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ long*		ft_checkordered (long *i, int argc);
 long* 		ft_convert_int (int argc, char **argv, long *cad);
 long*		ft_compare (long *i, int argc);
 long*		ft_stacks (int argc,long *stk);
-void		ft_orders(long *stk, long *stk2, int dig);
 void		ft_printstacks (long *i, long *j, int dig);
 void		ft_move(long *stk, long *stk2, int dig, char *cad);
 void		ft_swap(long *stk, int dig);
@@ -35,7 +34,7 @@ char*		ft_ordertree(long *stk, int dig);
 void		ft_orderbig(long *stk, long *stk2, int dig);
 void		ft_ra(long *stk, long *stk2, int small, int dig);
 void		ft_rra(long *stk, long *stk2, int small, int dig);
-long		*ft_stkdup(long int *s, int size);
 int 		ft_findtop(long *stk, int dig);
+int 		ft_find_args(int argc, char *argv);
 void		ft_help(void);
 #endif

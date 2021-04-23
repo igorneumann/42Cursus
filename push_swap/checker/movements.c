@@ -6,11 +6,11 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/16 19:52:15 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:57:39 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void			ft_orders(long *stk, long *stk2, int dig)
 {
@@ -19,22 +19,20 @@ void			ft_orders(long *stk, long *stk2, int dig)
 	ft_printstacks (stk, stk2, dig);
 	printf ("Tus ordenes ('inexistente' o vacio para terminar):\n");	
 	read(0, &cad[0], 1);
-	while (cad[0] < 97 && cad[0] != 10)
-		read(0, &cad[0], 1);
 	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
 		read(0, &cad[1], 1);
-	if (cad[1] == 'r')
+	if (cad[0] == 'r' && cad[1] == 'r')
 		read(0, &cad[2], 1);
-	else
+	else if (cad[1] == 'a' || cad[1] == 'b')
 		cad[2] = '\0';
 	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
 		read(0, &cad[3], 1);
+	if (cad[3] != '\n' || (cad[2] != '\0' && cad[2] != 'a' && cad[2] != 'b'))
+		cad[0] = '\0';
 	cad[3] = '\0';
-	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
-		printf ("Exec %s:\n", cad);
-	if ((cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r') &&
-		(cad[1] == 'a' || cad[1] == 'b' || 
-		(cad[1] == 'r' && (cad[2] == 'a' || cad[2] == 'b' ))))
+	if (cad[0] != '\0')
+		printf ("Exec \033[0;31m%s\033[0m:\n", cad);
+	if (cad[0] != '\0')
 	{
 		ft_move(stk, stk2, dig, cad);
 		ft_orders(stk, stk2, dig);
@@ -113,8 +111,7 @@ void			ft_rotate(long *stk, int dig)
 		i = 1;
 		stk[0] = stk[1];
 	}
-	while (stk[--dig] == 3000000000)
-		--dig;
+	dig = ft_findtop(stk, dig);
 	if (j == 0)
 	{
 		j = -1;
@@ -126,7 +123,7 @@ void			ft_rotate(long *stk, int dig)
 		stk[i] = stk[i + j];
 		i = i + j;
 	}
-	if (stk[dig] == 3000000000)
+	if (j > 0)
 		stk[dig] = stk[0];
 	stk[0] = 3000000000;
 }

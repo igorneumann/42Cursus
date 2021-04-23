@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 20:34:39 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/22 17:00:36 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:46:27 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,19 @@ int ft_findtop(long *stk, int dig)
 	while (stk[dig] == 3000000000)
 		--dig;
 	return (dig);
+}
+
+int ft_find_args(int argc, char *argv)
+{
+	int args;
+
+	args = 1;
+	while (argv[args])
+	{
+		if (ft_isdigit(argv[args]))
+			if (argv[args - 1] == ' ')
+				argc++;	
+		args++;
+	}
+	return(argc);
 }

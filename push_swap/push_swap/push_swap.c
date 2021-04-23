@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:23:58 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/22 19:31:28 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:51:52 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 int main (int argc, char **argv)
 {
+	int			count;
+	int			size;
 	long int	*stk;
 	long int	cad[argc];
 
-	if (argc > 1)
+	count = 0;
+	while (count < argc)
+		size = ft_find_args(argc, argv[count++]);
+	if (size > 1)
 	{
-		stk = check_values(argc, argv, cad);
-		if (argc > 2 && (stk[0] && stk[0] == -1))
-			printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
-		else if (argc > 2 && stk[0] == 0)
-		{
-			ft_orderit(ft_stkdup(stk, argc), ft_stacks(argc, stk), argc);
-			ft_orders (stk, ft_stacks(argc, stk), argc);
-			if (stk[0] == -1)
-				printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
-			else
-				printf("KO\n\033[0;31mBOOO, ESTA MAL!\033[0m\n\n");
-		}
-		else if (argc > 2)
+		stk = check_values(size, argv, cad);
+		if (!(size == 2 || (stk[0] && stk[0] == -1)) && stk[0] == 0)
+			ft_orderit(stk, ft_stacks(size, stk), size);
+		else if (!(size == 2 || (stk[0] && stk[0] == -1)))
 			printf("\n\033[0;31mERROR!\nERROR!\nERROR!\nVAS FATAL!\033[0m\n\n");
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/16 19:53:12 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:04:07 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ long* check_values (int argc, char **argv, long *cad)
 	i = 1;
 	j = 0;
 	k = 0;
-		if (argc >= 3)
+	if (argc >= 3)
 	{
 		while (argv[i])
 		{
 			while (argv[i][k])
 			{
-				if (!ft_isdigit((int)argv[i][k]))
+				if (argv[i][k] == ' ')
+					k++;
+				if (argv[i][k] && !ft_isdigit((int)argv[i][k]))
 					if (argv[i][k] != '-' && argv[i][k] != '+')
 						j++;
 				k++;
@@ -74,19 +76,32 @@ long* check_values (int argc, char **argv, long *cad)
 
 long* ft_convert_int (int argc, char **argv, long *cad)
 {
+	int			arg;
 	int 		j;
+	int			i;
 	long int	*k;
 
 	j = 1;
+	i = 0;
+	arg = 1;
 	cad[0] = 0;
 	if (!(k = malloc(argc * sizeof(long int))))
 		cad[0] = -1;
 	while ((argc - j) > 0)
 	{
-		k[argc - j] = ft_atoiswap(argv[j]);
+		k[argc - j] = ft_atoiswap(&argv[arg][i]);
 		if (k[argc - j] > 2147483648)
 			cad[0] = 1;
+		while (argv[arg][i] && ft_isdigit(argv[arg][i]))
+			i++;
+		while (argv[arg][i] && argv[arg][i] == ' ')
+			i++;
 		j++;
+		if (!argv[arg][i])
+		{
+			arg++;
+			i = 0;
+		}
 	}
 	k[0] = -1;
 	if (cad[0] == 0)

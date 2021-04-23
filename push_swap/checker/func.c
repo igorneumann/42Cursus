@@ -6,11 +6,11 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/16 19:53:12 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:05:34 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 long int		ft_atoiswap(const char *n)
 {
@@ -50,13 +50,15 @@ long* check_values (int argc, char **argv, long *cad)
 	i = 1;
 	j = 0;
 	k = 0;
-		if (argc >= 3)
+	if (argc >= 3)
 	{
 		while (argv[i])
 		{
 			while (argv[i][k])
 			{
-				if (!ft_isdigit((int)argv[i][k]))
+				if (argv[i][k] == ' ')
+					k++;
+				if (argv[i][k] && !ft_isdigit((int)argv[i][k]))
 					if (argv[i][k] != '-' && argv[i][k] != '+')
 						j++;
 				k++;

@@ -6,43 +6,11 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/22 19:24:47 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/22 21:00:18 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void			ft_orders(long *stk, long *stk2, int dig)
-{
-	char		cad[4];
-
-	ft_printstacks (stk, stk2, dig);
-	printf ("Tus ordenes ('inexistente' o vacio para terminar):\n");	
-	read(0, &cad[0], 1);
-	while (cad[0] < 97 && cad[0] != 10)
-		read(0, &cad[0], 1);
-	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
-		read(0, &cad[1], 1);
-	if (cad[1] == 'r')
-		read(0, &cad[2], 1);
-	else
-		cad[2] = '\0';
-	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
-		read(0, &cad[3], 1);
-	cad[3] = '\0';
-	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
-		printf ("Exec %s:\n", cad);
-	if ((cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r') &&
-		(cad[1] == 'a' || cad[1] == 'b' || 
-		(cad[1] == 'r' && (cad[2] == 'a' || cad[2] == 'b' ))))
-	{
-		ft_move(stk, stk2, dig, cad);
-		ft_orders(stk, stk2, dig);
-	}
-	else 
-		ft_compare(stk, dig);
-}
-
 
 void			ft_move(long *stk, long *stk2, int dig, char *cad)
 {
