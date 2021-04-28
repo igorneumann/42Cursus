@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 20:34:39 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/23 20:46:27 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/28 19:55:02 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,39 @@ long	*ft_stkdup(long int *s, int size)
 	return (pnt);
 }
 
-int ft_findtop(long *stk, int dig)
+int			ft_findbigger(long *stk, int dig)
 {
-	--dig;
-	while (stk[dig] == 3000000000)
-		--dig;
-	return (dig);
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (dig-- > 1)
+	{
+		if (stk[dig] > j)
+		{
+			i = dig;
+			j = stk[i];
+		}
+	}
+	return (i);
 }
 
-int ft_find_args(int argc, char *argv)
+int			ft_findsmaller(long *stk, int dig)
 {
-	int args;
+	int 		i;
+	long int	j;
+	int			k;
 
-	args = 1;
-	while (argv[args])
+	i = 0;
+	j = 3000000000;
+	while (++i < dig)
 	{
-		if (ft_isdigit(argv[args]))
-			if (argv[args - 1] == ' ')
-				argc++;	
-		args++;
+		if (stk[i] < j)
+		{
+			j = stk[i];
+			k = i;
+		}
 	}
-	return(argc);
+	return (k);
 }

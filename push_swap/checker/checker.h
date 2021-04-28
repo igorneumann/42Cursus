@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/23 16:53:35 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:39:57 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSHSWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include <stdio.h>
 
 long int	ft_atoiswap(const char *n);
 long* 		check_values (int argc, char **argv, long *cad);
@@ -31,4 +31,5 @@ void		ft_rotate(long *stk, int dig);
 int 		ft_findtop(long *stk, int dig);
 int 		ft_find_args(int argc, char *argv);
 void		ft_help(void);
+int			ft_isdigit(int c);
 #endif

@@ -6,11 +6,11 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/23 20:05:34 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:15:25 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../checker/checker.h"
 
 long int		ft_atoiswap(const char *n)
 {

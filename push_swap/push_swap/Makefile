@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 19:32:05 by ineumann          #+#    #+#              #
-#    Updated: 2021/04/21 17:30:01 by ineumann         ###   ########.fr        #
+#    Updated: 2021/04/28 18:49:05 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,26 +14,25 @@ NAME = push_swap
 
 CC = @gcc
 
-CFLAGS = -Wall -Wextra -Werror -I libft -g
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS = push_swap.c func.c movements.c orderit.c push_func.c orderbig.c
+SRCS = push_swap.c orderit.c push_func.c orderbig.c orderhuge.c
 
-LIB = ../libft/libft.a
+COMMON = ../common/movements.c ../common/func.c ../common/common.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C ../libft/
-	@$(CC) $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRCS) $(COMMON) -o $(NAME)
 
 clean:
 	@rm -rf *.o *.gch *.dSYM
+	@rm -rf ../common/*.o ../common/*.gch ../common/*.dSYM
 
 fclean: clean
 	@rm -f *.o $(NAME)
-	@make fclean -C ../libft/
 
 re: fclean all
 

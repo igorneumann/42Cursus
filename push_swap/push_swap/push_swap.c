@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:23:58 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/23 20:51:52 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/28 19:12:35 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,16 @@ int main (int argc, char **argv)
 	return (1);
 }
 
-long*	ft_stacks (int argc,long *stk)
+void		ft_orderit(long *stk, long *stk2, int dig)
 {
-	long int	*stk2;
-	int 		i;
-	
-	i = 0;
-	if (!(stk2 = malloc(argc * sizeof(long int))))
-		return ((long*)-1);
-	while (i < argc)
-		stk2[i++] = 3000000000;
-	stk[0] = 3000000000;
-	return (stk2);	
+	if (dig == 3)
+		printf ("sa");
+	else if (dig == 4)
+		printf ("%s", ft_ordertree(stk, dig));
+	else if (dig > 4 && dig < 99)
+		ft_orderbig(stk, stk2, dig);
+	else if (dig > 99)
+		ft_orderhuge(stk, stk2, dig);
 }
 
 void	ft_help(void)

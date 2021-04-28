@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:07:50 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/22 18:52:24 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/28 19:16:13 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,21 @@ void		ft_orderbig(long *stk, long *stk2, int dig)
 
 void		ft_rra(long *stk, long *stk2, int small, int dig)
 {
+	char cad[4];
+
+	cad[0] = 'r';
+	cad[1] = 'r';
+	cad[2] = 'a';
+	cad[3] = '\0';
 	while (small-- > 0)
 	{
-		ft_move(stk, stk2, dig, "rra");
-		printf ("rra\n");
+		printf ("%s\n", cad);
+		ft_move(stk, stk2, dig, cad);
 	}	
-	ft_move(stk, stk2, dig, "pb");
+	ft_move(stk, stk2, dig, "pb ");
 	printf ("pb\n");
 }
+
 void		ft_ra(long *stk, long *stk2, int small, int dig)
 {
 	int top;

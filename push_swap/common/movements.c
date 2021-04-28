@@ -6,11 +6,41 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/22 21:00:18 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:15:34 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../checker/checker.h"
+
+void			ft_orders(long *stk, long *stk2, int dig)
+{
+	char		cad[4];
+
+	ft_printstacks (stk, stk2, dig);
+	printf ("Tus ordenes ('inexistente' o vacio para terminar):\n");	
+	read(0, &cad[0], 1);
+	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
+		read(0, &cad[1], 1);
+	if (cad[0] == 'r' && cad[1] == 'r')
+		read(0, &cad[2], 1);
+	else if (cad[1] == 'a' || cad[1] == 'b')
+		cad[2] = '\0';
+	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
+		read(0, &cad[3], 1);
+	if (cad[3] != '\n' || (cad[2] != '\0' && cad[2] != 'a' && cad[2] != 'b'))
+		cad[0] = '\0';
+	cad[3] = '\0';
+	if (cad[0] != '\0')
+		printf ("Exec \033[0;31m%s\033[0m:\n", cad);
+	if (cad[0] != '\0')
+	{
+		ft_move(stk, stk2, dig, cad);
+		ft_orders(stk, stk2, dig);
+	}
+	else 
+		ft_compare(stk, dig);
+}
+
 
 void			ft_move(long *stk, long *stk2, int dig, char *cad)
 {
@@ -35,9 +65,9 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 			dig = -dig;
 			cad[1] = cad[2];
 		}
-		if (cad[1] != 'b' && cad[2] != 'b')
+		if (cad[1] != 'b')
 			ft_rotate(stk, dig);
-		if (cad[1] != 'a' && cad[2] != 'a')
+		if (cad[1] != 'a')
 			ft_rotate(stk2, dig);
 	}
 	if (dig < 0)
