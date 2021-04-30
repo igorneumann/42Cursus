@@ -6,11 +6,11 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/28 17:15:25 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/30 20:49:48 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker/checker.h"
+#include "../ft-checker/checker.h"
 
 long int		ft_atoiswap(const char *n)
 {
@@ -58,7 +58,7 @@ long* check_values (int argc, char **argv, long *cad)
 			{
 				if (argv[i][k] == ' ')
 					k++;
-				if (argv[i][k] && !ft_isdigit((int)argv[i][k]))
+				if (argv[i][k] && (argv[i][k] < '0' || argv[i][k] > '9'))
 					if (argv[i][k] != '-' && argv[i][k] != '+')
 						j++;
 				k++;

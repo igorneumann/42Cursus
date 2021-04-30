@@ -6,11 +6,11 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:28:09 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/28 17:36:58 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/04/30 21:01:10 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker/checker.h"
+#include "../ft-checker/checker.h"
 
 long*	ft_stacks (int argc,long *stk)
 {
@@ -36,23 +36,15 @@ int ft_findtop(long *stk, int dig)
 
 int ft_find_args(int argc, char *argv)
 {
-	int args;
+	int pos;
 
-	args = 1;
-	while (argv[args])
+	pos = 1;
+	while (argv[pos])
 	{
-		if (ft_isdigit(argv[args]))
-			if (argv[args - 1] == ' ')
+		if (argv[pos] == ' ')
+			if (argv[pos + 1] < '0' || argv[pos + 1] > '9')
 				argc++;
-		args++;
+		pos++;
 	}
 	return(argc);
 }
-
-int	ft_isdigit(int c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
-}
-
