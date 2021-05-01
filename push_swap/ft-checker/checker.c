@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/30 20:58:32 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/01 19:33:04 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int main (int argc, char **argv)
 	size = ft_find_args(argc, argv[1]);
 	if (size > 1)
 	{
-		stk = check_values(size, argv, cad);
+		if (size != argc)
+			stk = check_args(size, argv[1], cad);				
+		else
+			stk = check_values(size, argv, cad);	
 		if (size == 2 || (stk[0] && stk[0] == -1))
 			printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
 		else if (stk[0] == 0)

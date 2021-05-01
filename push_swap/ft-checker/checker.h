@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/28 17:39:57 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/01 19:27:09 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void		ft_rotate(long *stk, int dig);
 int 		ft_findtop(long *stk, int dig);
 int 		ft_find_args(int argc, char *argv);
 void		ft_help(void);
-int			ft_isdigit(int c);
+long* 		check_args(int size, char *arg, long *cad);
+long* 		ft_convert_arg(int size, char *arg, long *cad);
 #endif
