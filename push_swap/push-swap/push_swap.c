@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:23:58 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/30 20:18:44 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:27:33 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int main (int argc, char **argv)
 	long int	cad[argc];
 
 	count = 0;
-	size = ft_find_args(argc, argv[1]);
-	if (size > 1)
+	if (argc > 1)
 	{
+		size = ft_find_args(argc, argv[1]);
 		stk = check_values(size, argv, cad);
-		if (!(size == 2 || (stk[0] && stk[0] == -1)) && stk[0] == 0)
+		if (!(size == 1 || (stk[0] && stk[0] == -1)) && stk[0] == 0)
 			ft_orderit(stk, ft_stacks(size, stk), size);
 		else if (!(size == 2 || (stk[0] && stk[0] == -1)))
 			printf("\n\033[0;31mERROR!\nERROR!\nERROR!\nVAS FATAL!\033[0m\n\n");
@@ -55,5 +55,6 @@ void	ft_help(void)
 {
 	printf ("\033[0;31m\n  ** FALTAN LOS ARGUMENTOS **\n\n\033[0;34m");
 	printf ("Argumentos son numeros enteros separados por espacio\n\n");
-	printf ("El programa te dará la mejor combinación de movimientos\n\033[0m");
+	printf ("El programa te dará la mejor combinación de movimientos\n");
+	printf ("...al menos la mejor que he sido capaz de llegar.\n\n\033[0m");
 }

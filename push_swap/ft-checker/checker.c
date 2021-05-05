@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/01 19:33:04 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/05 21:15:14 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int main (int argc, char **argv)
 	long int	cad[argc];
 
 	count = 0;
-	size = ft_find_args(argc, argv[1]);
-	if (size > 1)
+	if (argc > 1)
 	{
+		size = ft_find_args(argc, argv[1]);
 		if (size != argc)
 			stk = check_args(size, argv[1], cad);				
 		else
 			stk = check_values(size, argv, cad);	
-		if (size == 2 || (stk[0] && stk[0] == -1))
+		if (stk[0] && stk[0] == -1)
 			printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
 		else if (stk[0] == 0)
 		{
@@ -54,22 +54,18 @@ void			ft_orders(long *stk, long *stk2, int dig)
 
 	ft_printstacks (stk, stk2, dig);
 	printf ("Tus ordenes ('inexistente' o vacio para terminar):\n");	
-	read(0, &cad[0], 1);
-	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
-		read(0, &cad[1], 1);
-	if (cad[0] == 'r' && cad[1] == 'r')
+	read(0, &cad[0], 2);
+	if (checkchar(cad[1], 2) == 2)
 		read(0, &cad[2], 1);
-	else if (cad[1] == 'a' || cad[1] == 'b')
+	else if (checkchar(cad[1], 2) == 1)
 		cad[2] = '\0';
-	if (cad[0] == 's' || cad[0] == 'p' || cad[0] == 'r')
+	if (checkchar(cad[0], 1) == 1 && checkchar(cad[1], 2) != 0)
 		read(0, &cad[3], 1);
-	if (cad[3] != '\n' || (cad[2] != '\0' && cad[2] != 'a' && cad[2] != 'b'))
-		cad[0] = '\0';
-	cad[3] = '\0';
-	if (cad[0] != '\0')
-		printf ("Exec \033[0;31m%s\033[0m:\n", cad);
-	if (cad[0] != '\0')
+	printf("%d", checkorder(cad));
+	if (checkorder(cad) && cad[3] == '\n')
 	{
+		cad[3] = '\0';
+		printf ("Exec \033[0;31m%s\033[0m:\n", cad);
 		ft_move(stk, stk2, dig, cad);
 		ft_orders(stk, stk2, dig);
 	}
@@ -78,6 +74,26 @@ void			ft_orders(long *stk, long *stk2, int dig)
 		ft_compare(stk, dig);
 		free(stk2);
 	}
+}
+
+int		checkorder(char *cad)
+{
+if (checkchar(cad[0], 1) == 1 && checkchar(cad[1], 2) == 1 && cad[2] == '\0')
+	return (1);
+if (checkchar(cad[0], 1) == 1 && checkchar(cad[1], 2) == 2	&& checkchar(cad[2], 3) > 0 && cad[3] == '\n')
+	return (1);
+return (0);
+}
+
+int		checkchar(char c, int pos)
+{
+if (pos == 1 && (c == 's' || c == 'p' || c == 'r'))
+	return (1);
+else if ((pos == 2 || pos == 3) && (c == 'a' || c == 'b'))
+	return (1);
+else if ((pos == 2 || pos == 3) && c == 'r')
+	return (2);
+return (0);
 }
 
 void	ft_help(void)

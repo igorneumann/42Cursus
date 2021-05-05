@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/01 17:10:30 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/05 21:15:12 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 {
 	if (cad[0] == 's')
 	{
-		if (cad[1] == 'a' || cad[1] == 's' )
+		if (cad[1] == 'a')
 			ft_swap(stk, dig);
-		if (cad[1] == 'b' || cad[1] == 's' )
+		if (cad[1] == 'b')
 			ft_swap(stk2, dig);
 	}
 	else if (cad[0] == 'p')
@@ -35,9 +35,9 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 			dig = -dig;
 			cad[1] = cad[2];
 		}
-		if (cad[1] != 'b')
+		if (cad[1] != 'b' && ft_findtop(stk, (dig * -1)) > 0)
 			ft_rotate(stk, dig);
-		if (cad[1] != 'a')
+		if (cad[1] != 'a' && ft_findtop(stk2, (dig * -1)) > 0)
 			ft_rotate(stk2, dig);
 	}
 	if (dig < 0)
@@ -64,8 +64,11 @@ void			ft_push(long *stk, long *stk2, int dig)
 	while (stk[top1] == 3000000000 && top1 > 0)
 		--top1;
 	top2 = dig - top1;
-	stk2[top2] = stk[top1];
-	stk[top1] = 3000000000;
+	if (top1 > 0 && top2 > 0)
+	{
+		stk2[top2] = stk[top1];
+		stk[top1] = 3000000000;
+	}
 }
 
 void			ft_rotate(long *stk, int dig)
@@ -82,7 +85,7 @@ void			ft_rotate(long *stk, int dig)
 		stk[0] = stk[1];
 	}
 	dig = ft_findtop(stk, dig);
-	if (j == 0)
+	if (j == 0 && stk[dig] != 3000000000)
 	{
 		j = -1;
 		i = dig;

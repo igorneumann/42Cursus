@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:07:50 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/30 18:15:05 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/05 21:15:15 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,40 @@ void		ft_orderbig(long *stk, long *stk2, int dig, int ord)
 
 	half = dig / 2;
 	stka = dig;
-	while (stka > 4 || (stka > 0 && ord == 1))
+	while (stka > 4 || (stka != 0 && ord > 0))
 	{
-		if (ord == 0)
-			small = ft_findsmaller(stk, dig);
-		if (ord == 1)
-			small = ft_findbigger(stk2, dig);
-		if (small <= half && ord == 0)
+		small = ft_findsmaller(stk, dig);
+		if (small <= half)
 			ft_rra(stk, stk2, small, dig);
-		if (small > half && ord == 0)
+		if (small > half)
 			ft_ra(stk, stk2, small, dig);
-		if (small <= half && ord == 1)
-			ft_rrb(stk, stk2, small, dig);
-		if (small > half && ord == 1)
-			ft_rb(stk, stk2, small, dig);
 		stka--;
 	}
-	printf ("%s",ft_ordertree(stk, dig));
+	if (ord == 0)
+		printf ("%s",ft_ordertree(stk, dig));
 	while (stka++ < dig)
 		printf ("pa\n");
+}
+
+void		ft_orderleft(long *stk, long *stk2, int dig)
+{
+	int half;
+	int big;
+	int stkb;
+
+	half = dig / 2;
+	stkb = dig;
+	while (stkb > 1)
+	{
+		big = ft_findbigger(stk2, dig);
+		if (big <= half)
+			ft_rrb(stk, stk2, big, dig);
+		if (big > half)
+			ft_rb(stk, stk2, big, dig);
+		stkb--;
+	}
+	while (stkb++ < dig)
+		printf ("pb\n");
 }
 
 
@@ -84,7 +99,7 @@ void		ft_rrb(long *stk, long *stk2, int small, int dig)
 		printf ("rrb\n");
 	}	
 	ft_move(stk, stk2, dig, "pa");
-	printf ("pb\n");
+	printf ("pa\n");
 }
 
 void		ft_rb(long *stk, long *stk2, int small, int dig)
@@ -97,5 +112,5 @@ void		ft_rb(long *stk, long *stk2, int small, int dig)
 		printf ("rb\n");
 	}
 	ft_move(stk, stk2, dig, "pa");
-	printf ("pb\n");
+	printf ("pa\n");
 }

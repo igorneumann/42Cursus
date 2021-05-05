@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 17:39:13 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/01 19:29:51 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/05 18:14:14 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ long* check_values (int argc, char **argv, long *cad)
 	i = 1;
 	j = 0;
 	k = 0;
-	if (argc >= 3)
+	if (argc >= 2)
 	{
 		while (argv[i])
 		{
 			while (argv[i][k])
 			{
-				if (argv[i][k] == ' ')
-					k++;
 				if (argv[i][k] && (argv[i][k] < '0' || argv[i][k] > '9'))
 					if (argv[i][k] != '-' && argv[i][k] != '+')
 						j++;

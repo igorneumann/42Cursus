@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/29 20:45:32 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/04 20:28:59 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void		ft_help(void);
 int			ft_isdigit(int c);
 void		ft_orderstack(long *stk, long *ord, int dig);
 long		ft_biggerthan(long *stk, long bigger, int dig);
-void		ft_orderfi (long *stk, long *stk2, long *ord, int dig);
+void		*ft_orderfi (long *stk, long *stk2, int cut, int dig);
 void		ft_rrr (long *stk, long *ord, int top);
-void		ft_orderreverse(long *stk2, long *stk1, int dig);
+void		*ft_orderrev (long *stk, long *stk2, int cut, int dig);
+void		ft_orderleft(long *stk, long *stk2, int dig);
 #endif

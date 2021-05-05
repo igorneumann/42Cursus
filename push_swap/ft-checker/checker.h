@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/01 19:27:09 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/05 21:15:17 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,6 @@ int 		ft_find_args(int argc, char *argv);
 void		ft_help(void);
 long* 		check_args(int size, char *arg, long *cad);
 long* 		ft_convert_arg(int size, char *arg, long *cad);
+int			checkchar(char c, int pos);
+int			checkorder(char *cad);
 #endif
