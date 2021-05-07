@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 19:32:05 by ineumann          #+#    #+#              #
-#    Updated: 2021/04/28 18:49:05 by ineumann         ###   ########.fr        #
+#    Updated: 2021/05/07 17:14:48 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = @gcc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS = push_swap.c orderit.c push_func.c orderbig.c orderhuge.c
+SRCS = push_swap.c orderit.c push_func.c orderbig.c orderhundred.c orderhuge.c
 
 COMMON = ../common/movements.c ../common/func.c ../common/common.c
 

@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:54:22 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/05 21:15:12 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/06 18:26:25 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void			ft_move(long *stk, long *stk2, int dig, char *cad)
 			dig = -dig;
 			cad[1] = cad[2];
 		}
-		if (cad[1] != 'b' && ft_findtop(stk, (dig * -1)) > 0)
+		if (cad[1] != 'b' && ft_findtop(stk, dig) > 0)
 			ft_rotate(stk, dig);
-		if (cad[1] != 'a' && ft_findtop(stk2, (dig * -1)) > 0)
+		if (cad[1] != 'a' && ft_findtop(stk2, dig) > 0)
 			ft_rotate(stk2, dig);
 	}
 	if (dig < 0)

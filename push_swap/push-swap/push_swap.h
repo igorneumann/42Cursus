@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/04 20:28:59 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/07 21:20:15 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void		ft_move(long *stk, long *stk2, int dig, char *cad);
 void		ft_swap(long *stk, int dig);
 void		ft_push(long *stk, long *stk2, int dig);
 void		ft_rotate(long *stk, int dig);
-int			ft_findbigger(long *stk, int dig);
-int			ft_findsmaller(long *stk, int dig);
+int			ft_findbigger(long *stk, int dig, int func);
+int			ft_findsmaller(long *stk, int dig, int func);
 char*		ft_ordertree(long *stk, int dig);
-void		ft_orderbig(long *stk, long *stk2, int dig,  int ord);
+void		ft_orderbig(long *stk, long *stk2, int dig, int ord);
+void		ft_orderhundred(long *stk, long *stk2, int dig);
 void		ft_orderhuge(long *stk, long *stk2, int dig);
 void		ft_ra(long *stk, long *stk2, int small, int dig);
 void		ft_rra(long *stk, long *stk2, int small, int dig);
@@ -44,7 +45,10 @@ int			ft_isdigit(int c);
 void		ft_orderstack(long *stk, long *ord, int dig);
 long		ft_biggerthan(long *stk, long bigger, int dig);
 void		*ft_orderfi (long *stk, long *stk2, int cut, int dig);
-void		ft_rrr (long *stk, long *ord, int top);
+void 		ft_rrr (long *stk, long *ord, int top);
 void		*ft_orderrev (long *stk, long *stk2, int cut, int dig);
 void		ft_orderleft(long *stk, long *stk2, int dig);
+int 		lessmov(int *small,int dig, int cut);
+void		ft_orderwait (long *stk, long *stk2, int dig, int cut);
+void		ft_orderwaitl (long *stk, long *stk2, int dig, int cut);
 #endif

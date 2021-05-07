@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/05 21:15:14 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/06 19:23:53 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,37 +48,38 @@ int main (int argc, char **argv)
 	return (1);
 }
 
-void			ft_orders(long *stk, long *stk2, int dig)
+int			ft_orders(long *stk, long *stk2, int dig)
 {
 	char		cad[4];
 
-	ft_printstacks (stk, stk2, dig);
-	printf ("Tus ordenes ('inexistente' o vacio para terminar):\n");	
-	read(0, &cad[0], 2);
-	if (checkchar(cad[1], 2) == 2)
-		read(0, &cad[2], 1);
-	else if (checkchar(cad[1], 2) == 1)
-		cad[2] = '\0';
-	if (checkchar(cad[0], 1) == 1 && checkchar(cad[1], 2) != 0)
-		read(0, &cad[3], 1);
-	printf("%d", checkorder(cad));
-	if (checkorder(cad) && cad[3] == '\n')
+	while (cad[0])
 	{
-		cad[3] = '\0';
-		printf ("Exec \033[0;31m%s\033[0m:\n", cad);
-		ft_move(stk, stk2, dig, cad);
-		ft_orders(stk, stk2, dig);
+		ft_printstacks (stk, stk2, dig);
+		printf ("Tus ordenes (CTRL+D para terminar):\n");	
+		if (!read(0, &cad[0], 2))
+			break;
+		if (checkchar(cad[1], 2) == 2)
+			if (!read(0, &cad[2], 1))
+				break;
+		if (!read(0, &cad[3], 1))
+				break;
+		if (checkorder(cad) && cad[3] == '\n')
+		{
+			cad[3] = '\0';
+			printf ("Exec \033[0;31m%s\033[0m:\n", cad);
+			ft_move(stk, stk2, dig, cad);
+		}
+		else
+			printf ("ERRO: No entiendo \033[0;31m%s\033[0m:\n", cad);
 	}
-	else 
-	{
-		ft_compare(stk, dig);
-		free(stk2);
-	}
+	ft_compare(stk, dig);
+	free(stk2);
+	return (0);
 }
 
 int		checkorder(char *cad)
 {
-if (checkchar(cad[0], 1) == 1 && checkchar(cad[1], 2) == 1 && cad[2] == '\0')
+if (checkchar(cad[0], 1) == 1 && checkchar(cad[1], 2) == 1)
 	return (1);
 if (checkchar(cad[0], 1) == 1 && checkchar(cad[1], 2) == 2	&& checkchar(cad[2], 3) > 0 && cad[3] == '\n')
 	return (1);

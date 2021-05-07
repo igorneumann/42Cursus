@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:28:09 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/05 21:15:16 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/06 18:27:29 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ long*	ft_stacks (int argc,long *stk)
 
 int ft_findtop(long *stk, int dig)
 {
+	if (dig < 0)
+		dig = (dig * -1);
 	--dig;
 	while (stk[dig] == 3000000000)
 		--dig;

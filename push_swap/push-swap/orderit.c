@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:02:36 by ineumann          #+#    #+#             */
-/*   Updated: 2021/04/28 19:12:19 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/07 21:07:06 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char*		ft_ordertree(long *stk, int dig)
 {
 	int bigger;
 
-	bigger = ft_findbigger(stk, dig);
+	bigger = ft_findbigger(stk, dig, 0);
 	if (bigger == 3)
 	{
 		if (stk[2] > stk[1])
