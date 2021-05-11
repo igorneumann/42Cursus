@@ -18,7 +18,7 @@ void		ft_orderhuge(long *stk, long *stk2, int dig)
 	ft_orderwait(stk, stk2, dig, 15);
 //	ft_orderwaitl(stk, stk2, dig, 15);
 //	ft_orderwait(stk, stk2, dig, 5);
-	ft_orderleft(stk, stk2, dig);
+//	ft_orderleft(stk, stk2, dig);
 	ft_printstacks (stk, stk2, dig);
 }
 

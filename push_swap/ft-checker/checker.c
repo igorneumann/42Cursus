@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/06 19:23:53 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:20:41 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			ft_orders(long *stk, long *stk2, int dig)
 		ft_printstacks (stk, stk2, dig);
 		printf ("Tus ordenes (CTRL+D para terminar):\n");	
 		if (!read(0, &cad[0], 2))
-			break;
+			printf("break");
 		if (checkchar(cad[1], 2) == 2)
 			if (!read(0, &cad[2], 1))
 				break;
