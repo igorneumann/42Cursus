@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:23:58 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/07 20:04:40 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/13 20:33:43 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,11 @@ void		ft_orderit(long *stk, long *stk2, int dig)
 	else if (dig == 4)
 		printf ("%s", ft_ordertree(stk, dig));
 	else if (dig > 4 && dig <= 99)
-	{
 		ft_orderbig(stk, stk2, dig, 0);
-	}
 	else if (dig > 99 && dig < 200)
 		ft_orderhundred(stk, stk2, dig);
 	else if (dig >= 200)
-	{
 		ft_orderhuge(stk, stk2, dig);
-	}
 	free(stk2);
 }
 

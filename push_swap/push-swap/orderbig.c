@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:07:50 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/07 21:06:46 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/14 18:25:30 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_orderbig(long *stk, long *stk2, int dig, int ord)
 	stka = dig;
 	while (stka > 4 || (stka != 0 && ord > 0))
 	{
-		small = ft_findsmaller(stk, dig, 0);
+		small = ft_findbiggerthan(stk, dig, 0);
 		if (small <= half)
 			ft_rra(stk, stk2, small, dig);
 		if (small > half)
@@ -39,15 +39,13 @@ void		ft_orderleft(long *stk, long *stk2, int dig)
 {
 	int half;
 	int big;
-	int small;
 	int stkb;
 
 	half = dig / 2;
 	stkb = dig;
 	while (stkb > 1)
 	{
-		big = ft_findbigger(stk2, dig, 0);
-		small = ft_findsmaller(stk2, dig, 0);
+		big = ft_findbigger(stk2, dig);
 		if (big <= half)
 			ft_rrb(stk, stk2, big, dig);
 		if (big > half)

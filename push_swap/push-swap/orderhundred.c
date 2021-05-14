@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:44:32 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/07 21:06:53 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/13 20:45:20 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		ft_orderstack(long *stk, long *ord, int dig)
 	long	bigger;
 
 	i = dig - 1;
-	bigger = stk[ft_findbigger(stk, dig, 0)];
+	bigger = stk[ft_findbigger(stk, dig)];
 	ord[i--] = bigger;
 	while (i > 0)
 	{
@@ -93,6 +93,19 @@ void 	ft_rrr (long *stk, long *ord, int top)
 	{
 		ft_move(stk, ord, top, "ra");
 		printf ("rb\n");
+	}
+	free(ord);
+}
+
+void 	ft_rrrl (long *stk, long *ord, int top)
+{
+	int half;
+	half = top / 2;
+	ft_orderstack(stk, ord, top);
+	if (top > 2 && stk[top - 1] > ord[half])
+	{
+		ft_move(stk, ord, top, "ra");
+		printf ("ra\n");
 	}
 	free(ord);
 }
