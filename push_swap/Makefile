@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/30 16:23:52 by ineumann          #+#    #+#              #
-#    Updated: 2021/05/14 17:52:09 by ineumann         ###   ########.fr        #
+#    Updated: 2021/05/17 19:51:23 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,14 +59,15 @@ fclean:
 re: fclean make_both
 
 help:
-	@echo "\n\033[0;33mAyuda para PUSH-SWAP!"
+	@echo "\n\033[0;33m~~ Ayuda para PUSH-SWAP! ~~"
 	@echo "\n\033[0;31mMake\033[0m para compilar todo."
 	@echo "\033[0;31mMake clean\033[0m para borrar los objectos."
 	@echo "\033[0;31mMake fclean\033[0m para borrar objectos y ejecutables."
 	@echo "\033[0;31mMake help\033[0m para ayuda."
 	@echo "\033[0;31mMake push\033[0m par ejecutar push_shwap con la variable del Makefile."
-	@echo "\033[0;31mMake checker\033[0m para ejecutar el checker con la variabble del Makefile."
-	@echo "\033[0;31mMake count\033[0m para ejecutar push_swap y contar los movimientos.\n"
+	@echo "\033[0;31mMake checker\033[0m para ejecutar el checker con la variable del Makefile."
+	@echo "\033[0;31mMake count\033[0m para ejecutar push_swap y contar los movimientos."
+	@echo "\033[0;31mMake print\033[0m para ejecutar push_swap e imprimir el resultado en print.txt.\n"
 	@echo "\033[0;33;5;7mPD.: ESO CUENTA COMO BONUS!\033[0m\n"
 
 .PHONY: all re clean fclean count checker print push make_both help

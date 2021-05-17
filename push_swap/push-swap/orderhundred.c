@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:44:32 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/13 20:45:20 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/15 14:04:23 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		ft_orderhundred(long *stk, long *stk2, int dig)
 	
 	cut = (dig / 2);
 	ord = ft_orderfi(stk, stk2, cut, dig);
-	ft_orderbig(stk, stk2, dig, 1);
+
 	free(ord);	
 	ft_orderleft(stk, stk2, dig);
 }
@@ -73,10 +73,10 @@ void	*ft_orderfi (long *stk, long *stk2, int cut, int dig)
 			ft_rrr (stk2, ft_stacks(topb, stk2), topb);
 		}
 		count--;
-		if (count == 0 && dig > (cut + (cut / 4)))
+		if (count == 0 && dig > (cut + 10))
 		{
 			count = ft_findtop(stk, dig) + 1;
-			cut += (cut / 5);
+			cut += 10;
 		}
 		else if (count == 0)
 			break;
@@ -97,7 +97,7 @@ void 	ft_rrr (long *stk, long *ord, int top)
 	free(ord);
 }
 
-void 	ft_rrrl (long *stk, long *ord, int top)
+/*void 	ft_rrrl (long *stk, long *ord, int top)
 {
 	int half;
 	half = top / 2;
@@ -108,4 +108,4 @@ void 	ft_rrrl (long *stk, long *ord, int top)
 		printf ("ra\n");
 	}
 	free(ord);
-}
+}*/

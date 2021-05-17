@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:26:10 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/13 20:45:33 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/15 13:34:40 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ void		ft_orderstack(long *stk, long *ord, int dig);
 long		ft_biggerthan(long *stk, long bigger, int dig);
 void		*ft_orderfi (long *stk, long *stk2, int cut, int dig);
 void 		ft_rrr (long *stk, long *ord, int top);
-void 		ft_rrrl (long *stk, long *ord, int top);
-void		*ft_orderrev (long *stk, long *stk2, int cut, int dig);
+//void 		ft_rrrl (long *stk, long *ord, int top);
+//void		*ft_orderrev (long *stk, long *stk2, int cut, int dig);
 void		ft_orderleft(long *stk, long *stk2, int dig);
 int 		lessmov(int *small,int dig, int cut);
-void		ft_orderwait (long *stk, long *stk2, int dig, int cut);
-void		ft_orderwaitl (long *stk, long *stk2, int dig, int cut);
+void		ft_orderwait (long *stk, long *stk2, int dig, float cut);
+//void		ft_orderwaitl (long *stk, long *stk2, int dig, int cut);
 int			ft_findbiggerthan(long *stk, int dig, long smaller);
 int			ft_findsmallerthan(long *stk, int dig, long bigger);
+int			ft_findbest(long *moves, int dig);
 #endif

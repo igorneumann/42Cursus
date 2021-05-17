@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:44:32 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/07 21:07:00 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/15 13:34:34 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	*ft_orderfi (long *stk, long *stk2, int cut, int dig)
 }
 
 
-void	*ft_orderrev (long *stk, long *stk2, int cut, int dig)
+/*void	*ft_orderrev (long *stk, long *stk2, int cut, int dig)
 {
 	int count;
 	int topb;
@@ -117,7 +117,7 @@ void	*ft_orderrev (long *stk, long *stk2, int cut, int dig)
 		}
 	}
 	return(ord);
-}
+}*/
 
 
 void 	ft_rrr (long *stk, long *ord, int top)

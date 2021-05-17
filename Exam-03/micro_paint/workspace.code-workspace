@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../MiniShell"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"workbench.editor.showTabs": true,
+		"files.autoSave": "onFocusChange",
+		"files.associations": {
+			"__locale": "c"
+		}
+	}
+}

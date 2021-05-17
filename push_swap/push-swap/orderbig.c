@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:07:50 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/14 18:25:30 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/17 19:30:50 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void		ft_orderleft(long *stk, long *stk2, int dig)
 	int big;
 	int stkb;
 
-	half = dig / 2;
 	stkb = dig;
 	while (stkb > 1)
 	{
+		half = (stkb / 2);
 		big = ft_findbigger(stk2, dig);
 		if (big <= half)
 			ft_rrb(stk, stk2, big, dig);

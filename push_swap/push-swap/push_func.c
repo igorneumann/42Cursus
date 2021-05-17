@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 20:34:39 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/13 20:56:26 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/14 19:42:57 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,45 +71,4 @@ int			ft_findbig(long *stk, int dig, int func, int buff)
 	while (++i < buff)
 		k[i] = ft_findsmallerthan(stk, dig, stk[k[i - 1]]);
 	return (k[func]);
-}
-
-int			ft_findbiggerthan(long *stk, int dig, long smaller)
-{
-	int 		i;
-	long int	j;
-	int			k;
-	
-	i = 0;
-	k = 0;
-	i = 0;
-	j = 3000000000;
-	while (++i < dig)
-	{
-		if (stk[i] < j && stk[i] > smaller)
-		{
-			j = stk[i];
-			k = i;
-		}
-	}
-	return (k);
-}
-int			ft_findsmallerthan(long *stk, int dig, long bigger)
-{
-	int 		i;
-	long int	j;
-	int			k;
-	
-	i = 0;
-	k = 0;
-	i = 0;
-	j = -3000000000;
-	while (++i < dig)
-	{
-		if (stk[i] > j && stk[i] < bigger)
-		{
-			j = stk[i];
-			k = i;
-		}
-	}
-	return (k);
 }

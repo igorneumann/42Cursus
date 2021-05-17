@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/14 18:33:12 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/17 19:26:36 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ int main (int argc, char **argv)
 			printf("\nTodos los argumentos son numeros enteros\n");
 			ft_orders (stk, ft_stacks(size, stk), size);
 			if (stk[0] == -1)
+				//printf("OK");
 				printf("OK\n\033[0;34mOK? ERES EL MEJOR Y LO SABES!\033[0m\n");
 			else
+				//printf("KO");
 				printf("KO\n\033[0;31mBOOO, ESTA MAL!\033[0m\n\n");
 		}
 		else
@@ -51,30 +53,31 @@ int main (int argc, char **argv)
 int			ft_orders(long *stk, long *stk2, int dig)
 {
 	char		cad[4];
+	int			i;
 
-	cad[0] = 1;
-	while (cad[0])
+	i = 0;
+	//ft_printstacks (stk, stk2, dig);
+	printf ("Tus ordenes (CTRL+D para terminar):\n");
+	while (i > -1)
 	{
-		ft_printstacks (stk, stk2, dig);
-		printf ("Tus ordenes (CTRL+D para terminar):\n");	
-		if (!read(0, &cad[0], 2))
-			break;
-		if (checkchar(cad[1], 2) == 2)
-			if (!read(0, &cad[2], 1))
-				break;
-		if (!read(0, &cad[3], 1))
-				break;
-		if (checkorder(cad) && cad[3] == '\n')
+		i = 0;		
+		while (cad[i - 1] != '\n')
+			if (!read(0, &cad[i++], 1))
+			{
+				//ft_printstacks (stk, stk2, dig);
+				ft_compare(stk, dig);
+				free(stk2);
+				return (0);
+			}
+		if (checkorder(cad) && cad[i - 1] == '\n')
 		{
-			cad[3] = '\0';
-			printf ("Exec \033[0;31m%s\033[0m:\n", cad);
+			cad[i - 1] = '\0';
+	//		printf ("Exec \033[0;31m%s\033[0m:\n", cad);
 			ft_move(stk, stk2, dig, cad);
 		}
 		else
 			printf ("ERRO: No entiendo \033[0;31m%s\033[0m:\n", cad);
 	}
-	ft_compare(stk, dig);
-	free(stk2);
 	return (0);
 }
 
