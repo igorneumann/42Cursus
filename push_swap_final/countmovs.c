@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 18:15:47 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/18 21:17:18 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/19 19:54:46 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main (void)
 			cad[0] = 1;
 		}
 	}
-	printf("%i movimientos\n", count);
+	printnum (count);
+	printg("movimientos\n");
 	return (0);
 }

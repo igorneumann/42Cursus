@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:07:50 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/18 21:16:16 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/19 20:13:31 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,30 @@
 
 void	ft_orderbig(long *stk, long *stk2, int dig)
 {
-	int	half;
-	int	small;
-	int	stka;
+	int		small;
+	int		stka[2];
+	char	*three;
 
-	half = dig / 2;
-	stka = dig;
-	while (stka > 4)
+	stka[1] = dig / 2;
+	stka[0] = dig;
+	while (stka[0] > 4)
 	{
 		small = ft_findbiggerthan(stk, dig, -3000000000);
-		if (small <= half)
+		if (small <= stka[1])
 			ft_rra(stk, stk2, small, dig);
-		if (small > half)
+		if (small > stka[1])
 			ft_ra(stk, stk2, small, dig);
-		stka--;
+		stka[0]--;
 	}
 	if (stk[1] < stk[2] || stk[2] < stk[3])
-		printf ("%s", ft_ordertree(stk, dig));
-	while (stka++ < dig)
+	{
+		three = ft_ordertree(stk, dig);
+		printg (three);
+	}
+	while (stka[0]++ < dig)
 	{
 		ft_move(stk, stk2, dig, "pa");
-		printf ("pa\n");
+		printg ("pa\n");
 	}
 }
 
@@ -67,10 +70,10 @@ void	ft_rra(long *stk, long *stk2, int small, int dig)
 	{
 		cad[1] = 'r';
 		ft_move(stk, stk2, dig, cad);
-		printf ("rra\n");
+		printg ("rra\n");
 	}	
 	ft_move(stk, stk2, dig, "pb");
-	printf ("pb\n");
+	printg ("pb\n");
 }
 
 void	ft_ra(long *stk, long *stk2, int small, int dig)
@@ -81,8 +84,8 @@ void	ft_ra(long *stk, long *stk2, int small, int dig)
 	while (small++ < top)
 	{
 		ft_move(stk, stk2, dig, "ra");
-		printf ("ra\n");
+		printg ("ra\n");
 	}
 	ft_move(stk, stk2, dig, "pb");
-	printf ("pb\n");
+	printg ("pb\n");
 }

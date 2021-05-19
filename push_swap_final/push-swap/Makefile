@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 19:32:05 by ineumann          #+#    #+#              #
-#    Updated: 2021/05/07 17:14:48 by ineumann         ###   ########.fr        #
+#    Updated: 2021/05/19 18:55:31 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS = push_swap.c orderit.c push_func.c orderbig.c orderhundred.c orderhuge.c
 
-COMMON = ../common/movements.c ../common/func.c ../common/common.c
+COMMON = ../common/movements.c ../common/func.c ../common/common.c ../common/print.c
 
 OBJS = $(SRCS:.c=.o)
 

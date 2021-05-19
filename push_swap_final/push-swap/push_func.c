@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 20:34:39 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/18 21:06:50 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/19 19:55:42 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	ft_rrb(long *stk, long *stk2, int small, int dig)
 	{
 		cad[1] = 'r';
 		ft_move(stk, stk2, dig, cad);
-		printf ("rrb\n");
+		printg ("rrb\n");
 	}	
 	ft_move(stk, stk2, dig, "pa");
-	printf ("pa\n");
+	printg ("pa\n");
 }
 
 void	ft_rb(long *stk, long *stk2, int small, int dig)
@@ -80,8 +80,8 @@ void	ft_rb(long *stk, long *stk2, int small, int dig)
 	while (small++ < top)
 	{
 		ft_move(stk, stk2, dig, "rb");
-		printf ("rb\n");
+		printg ("rb\n");
 	}
 	ft_move(stk, stk2, dig, "pa");
-	printf ("pa\n");
+	printg ("pa\n");
 }

@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 19:32:05 by ineumann          #+#    #+#              #
-#    Updated: 2021/05/18 19:32:42 by ineumann         ###   ########.fr        #
+#    Updated: 2021/05/19 18:55:18 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS = checker.c checkerhelp.c
 
-COMMON = ../common/movements.c ../common/func.c ../common/common.c
+COMMON = ../common/movements.c ../common/func.c ../common/common.c ../common/print.c
 
 OBJS = $(SRCS:.c=.o)
 

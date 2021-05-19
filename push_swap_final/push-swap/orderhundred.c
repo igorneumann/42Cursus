@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:44:32 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/18 21:10:22 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/19 19:55:16 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_rrr (long *stk, long *ord, int top)
 	if (top > 2 && stk[top - 1] < ord[half])
 	{
 		ft_move(stk, ord, top, "ra");
-		printf ("rb\n");
+		printg ("rb\n");
 	}
 	free(ord);
 }

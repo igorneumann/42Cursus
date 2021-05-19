@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:28:09 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/18 20:32:05 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/19 18:45:31 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,26 +84,4 @@ long int	ft_atoiswap(const char *n)
 			return (2147483649);
 	}
 	return (i[2] * i[1]);
-}
-
-void	ft_printstacks (long *i, long *j, int dig)
-{
-	printf ("\nS: A|B\n");
-	while (--dig > 0)
-	{
-		printf ("%d: ", dig);
-		if (i[dig] < 2147483647)
-			printf ("%ld", i[dig]);
-		else
-			printf ("-");
-		printf ("|");
-		if (j[dig] < 2147483647)
-			printf ("%ld", j[dig]);
-		else
-			printf ("-");
-		printf ("\n");
-	}
-	if (i[0] != 3000000000 || j[0] != 3000000000)
-		printf ("\nWARNING: Buffer NOT CLEAN: %ld - %ld\n", i[0], j[0]);
-	printf ("\n");
 }
