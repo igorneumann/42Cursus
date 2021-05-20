@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 19:32:05 by ineumann          #+#    #+#              #
-#    Updated: 2021/05/19 18:55:18 by ineumann         ###   ########.fr        #
+#    Updated: 2021/05/20 17:50:52 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = checker
 CC = @gcc
 
 CFLAGS = -Wall -Wextra -Werror -g
+
+SANIT = -g -g3 -fsanitize=address
 
 SRCS = checker.c checkerhelp.c
 
@@ -27,6 +29,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(SRCS) $(COMMON) -o $(NAME)
 
+sanit: $(OBJS)
+	@$(CC) $(CFLAGS) $(SANIT) $(SRCS) $(COMMON) -o $(NAME)
+
 clean:
 	@rm -rf *.o *.gch *.dSYM
 	@rm -rf ../common/*.o ../common/*.gch ../common/*.dSYM
@@ -36,4 +41,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all re clean fclean
+.PHONY: all re clean fclean sanit

@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:23:58 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/19 20:16:04 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/20 20:50:54 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	main (int argc, char **argv)
 	{
 		size = ft_find_args(argc, argv[1]);
 		stk = check_values(size, argv, cad);
-		if (size != 1 && stk[0] != 4000000000)
+		if ((size != 1 && stk[0] != 4000000000) && stk[0] != -1)
 			ft_orderit(stk, ft_stacks(size, stk), size);
-		else if (size != 2 || stk[0] == 4000000000)
+		else if ((size != 2 || stk[0] == 4000000000) && stk[0] != -1)
 			printg("\n\033[0;31mERROR!\nERROR!\nERROR!\nVAS FATAL!\033[0m\n\n");
-		if (stk[0] && stk[0] != 4000000000)
+		if (stk[0] && stk[0] != 4000000000 && stk[0] != -1)
 		{
 			free(stk);
 			return (0);
