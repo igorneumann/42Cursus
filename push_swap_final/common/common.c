@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 17:28:09 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/19 18:45:31 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/21 17:11:37 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_findtop(long *stk, int dig)
 	if (dig < 0)
 		dig = (dig * -1);
 	--dig;
-	while (stk[dig] == 3000000000)
+	while (dig > 0 && stk[dig] == 3000000000)
 		--dig;
 	return (dig);
 }

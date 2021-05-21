@@ -6,7 +6,7 @@
 /*   By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 20:07:31 by ineumann          #+#    #+#             */
-/*   Updated: 2021/05/19 20:38:39 by ineumann         ###   ########.fr       */
+/*   Updated: 2021/05/20 21:27:16 by ineumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_orders(long *stk, long *stk2, int dig, int i)
 	while (i > -1)
 	{
 		i = 0;
-		while (cad[i - 1] != '\n')
+		while (i == 0 ||cad[i - 1] != '\n')
 		{
 			if (!read(0, &cad[i++], 1))
 			{

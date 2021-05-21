@@ -6,7 +6,7 @@
 #    By: ineumann <ineumann@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 19:32:05 by ineumann          #+#    #+#              #
-#    Updated: 2021/05/20 17:50:52 by ineumann         ###   ########.fr        #
+#    Updated: 2021/05/21 16:57:51 by ineumann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,10 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(SRCS) $(COMMON) -o $(NAME)
 
 sanit: $(OBJS)
-	@$(CC) $(CFLAGS) $(SANIT) $(SRCS) $(COMMON) -o $(NAME)
+	@$(CC) $(CFLAGS) $(DEBUG) $(SRCS) $(COMMON) -o $(NAME)
+
+debug: $(OBJS)
+	@$(CC) $(CFLAGS) -g $(SRCS) $(COMMON) -o $(NAME)
 
 clean:
 	@rm -rf *.o *.gch *.dSYM
@@ -41,4 +44,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all re clean fclean sanit
+.PHONY: all re clean fclean sanit debug
